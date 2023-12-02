@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(env('SECRET_ADMIN_URL') + '/admin/', admin.site.urls),
 ]
